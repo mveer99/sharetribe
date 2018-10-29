@@ -1031,6 +1031,9 @@ CREATE TABLE `payment_settings` (
   `api_verified` tinyint(1) DEFAULT NULL,
   `api_visible_private_key` varchar(255) DEFAULT NULL,
   `api_country` varchar(255) DEFAULT NULL,
+  `commission_from_buyer` int(11) DEFAULT NULL,
+  `minimum_buyer_transaction_fee_cents` int(11) DEFAULT NULL,
+  `minimum_buyer_transaction_fee_currency` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_payment_settings_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2319,4 +2322,7 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20180720044534'),
 ('20180720065907'),
 ('20180723115548'),
-('20181106212306');
+('20181106212306'),
+('20181029064728');
+
+
