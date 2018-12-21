@@ -86,7 +86,9 @@ class Person < ApplicationRecord
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
 
-  has_many :listings, -> { where(deleted: 0) }, :dependent => :destroy, :foreign_key => "author_id"
+  # Utilize index on community_id + author_id
+  has_many :listings, ->(person) { where(community_id: person.community_id).exist }, :dependent => :destroy, :foreign_key => "author_id"
+
   has_many :emails, :dependent => :destroy, :inverse_of => :person
 
   has_one :location, -> { where(location_type: :person) }, :dependent => :destroy
