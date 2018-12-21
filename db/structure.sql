@@ -50,7 +50,8 @@ CREATE TABLE `auth_tokens` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `index_auth_tokens_on_token` (`token`) USING BTREE
+  UNIQUE KEY `index_auth_tokens_on_token` (`token`) USING BTREE,
+  KEY `index_on_person_id` (`person_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `billing_agreements`;
@@ -2319,4 +2320,5 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20180720044534'),
 ('20180720065907'),
 ('20180723115548'),
-('20181106212306');
+('20181106212306'),
+('20181221090333');
